@@ -1,0 +1,24 @@
+
+<div class="container">
+    <div class="row">
+        <div class="card mx-auto">
+            <div class="card-header text-white bg-primary">
+                <h4>LOGIN</h4>
+            </div>
+            <div class="card-body">
+
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input formControlName="userName" type="text" placeholder="Username" class="form-control">
+                    </div>
+                     <div class="form-group">
+                        <label for="password">Password</label>
+                        <input formControlName="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <p class="NeedAccount"> <button (click)="onsave()" class="btn btn-primary">Loggin</button>Need an Account??</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
