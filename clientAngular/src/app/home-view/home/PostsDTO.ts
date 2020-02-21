@@ -10,3 +10,8 @@ export interface PostDTO {
   title: string;
   text: string;
 }
+
+export interface DeletePostDTO {
+  success: boolean;
+  message: string;
+}

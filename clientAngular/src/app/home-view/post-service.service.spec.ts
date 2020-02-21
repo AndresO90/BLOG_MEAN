@@ -26,6 +26,7 @@ describe('PostServiceService', () => {
     );
 
     service.getPostModified().subscribe((posts: Post[]) => {
+      console.log('KAKE', FAKE_POSTS[0].image);
       expect(posts[0].image).toEqual(FAKE_POSTS[0].image);
       expect(posts[0].title).toEqual(FAKE_POSTS[0].title);
     });

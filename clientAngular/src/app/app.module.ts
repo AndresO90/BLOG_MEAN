@@ -1,8 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { TokenInterceptor } from './home-view/token.interceptor';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,11 @@ const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

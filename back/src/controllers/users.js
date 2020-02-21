@@ -106,7 +106,11 @@ usersController.createPost =  async(req,res) => {
         await newPost.save();
         user.createdPosts.push(newPost._id);
         await user.save();
-        res.status(200).json({success: true, message: "Post is create correctly!"});
+        res.status(200).json({success: true, message: "Post is create correctly!", 
+            image:image,
+            title:title.toUpperCase(),
+            _id:newPost._id
+        });
     }
     
 };
@@ -179,12 +183,15 @@ usersController.editPost = async(req,res) => {
         await Post.updateOne({_id: req.params.idPost}, {
             $set: editPost
         });
-        res.status(200).json({success: true, message: "Post edit correctly"})
+        res.status(200).json({success: true, message: "Post edit correctly",image:req.body.image,
+        title:req.body.title,
+        _id:req.params.idPost})
     }
 }
 };
 // Delete a Post
 usersController.deletePost = async(req,res) => {
+    console.log("HOLA");
     const user = await User.findOne({_id:req.params.userId});
     if(user == null) {
         res.status(400).json({success:false, msg:"User not found"});
@@ -192,21 +199,23 @@ usersController.deletePost = async(req,res) => {
     const post = await Post.findOne({_id : req.params.idPost});
     if(!post) {
         res.status(400).json({success: false, message: "Post not found"});
-    } else {
-        for(let comment of post.comments) {
+     } //else {
+    //     for(let comment of post.comments) {
+    //         console.log("COMMENT",comment);
 
-            let idComment = comment.commentId.toString()
-            const findComment = await Comment.findByIdAndDelete(idComment)
-            console.log("findComment",findComment);
+    //         let idComment = comment.commentId.toString()
+    //         console.log("idComment",idComment);
+    //         const findComment = await Comment.findByIdAndDelete(idComment)
+    //         console.log("findComment",findComment);
            
-        }
+    //     }
         await post.remove();
 
        
       
         res.status(200).json({success: true, message: "Post delete correctly"});
     }
-};
+
 // Add Likes  
 usersController.addLike = async(req,res) => {
    

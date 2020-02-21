@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
@@ -13,8 +14,9 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
+    ReactiveFormsModule
   ],
-  exports: [HomeComponent]
+  exports: [HomeComponent],
 })
 export class HomeViewModule { }
 

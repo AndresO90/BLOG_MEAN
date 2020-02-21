@@ -10,7 +10,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [ HttpClientTestingModule ],
       declarations: [ LoginComponent ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -24,6 +24,7 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
+    console.log('COMONENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', component);
     expect(component).toBeTruthy();
   });
 

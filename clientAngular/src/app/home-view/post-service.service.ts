@@ -20,7 +20,8 @@ export class PostService {
         postsDTO.map((postDTO: PostDTO) => {
           const post: Post = {
             image: postDTO.image,
-            title: postDTO.title
+            title: postDTO.title,
+            _id: postDTO._id
           };
           posts = [...posts, post];
           });
